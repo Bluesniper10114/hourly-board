@@ -1,0 +1,61 @@
+<div fxLayout="row" fxLayout.sm="column" fxLayoutAlign="start center" fxLayoutGap="10px">
+
+  <mat-card fxFlex.gt-sm="50%" fxFlex.sm="100%" class="p-0" ngClass.sm="w-100-p">
+
+    <table class="simple  header-table">
+      <tbody>
+        <tr>
+          <td class="title">{{ 'Billboard.date' | translate }}:</td>
+          <td class="text-center data">{{ headerData.date }}</td>
+        </tr>
+        <tr>
+          <td class="title">{{ 'Billboard.shift' | translate }}:</td>
+          <td class="text-center data">{{ headerData.shift }}</td>
+        </tr>
+        <tr>
+          <td class="title">{{ 'Billboard.lineName' | translate }}:</td>
+          <td class="text-center data">{{ headerData.lineName }}</td>
+        </tr>
+        <tr>
+          <td class="title">{{ 'Billboard.locationName' | translate }}:</td>
+          <td class="text-center data">{{ headerData.locationName }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </mat-card>
+
+  <mat-card fxFlex.gt-sm="50%" fxFlex.sm="100%" class="p-0" ngClass.sm="w-100-p">
+
+    <table class="simple  header-table">
+      <tbody>
+        <tr>
+          <td class="title">{{ 'Billboard.deliveryTime' | translate }}:</td>
+          <td class="text-center data">{{ headerData.deliveryTime }}</td>
+          <td rowSpan="3" class="img-td">
+            <img src="assets/images/png.jpg" alt="">
+          </td>
+        </tr>
+        <tr>
+          <td class="title">{{ 'Billboard.maxHourProduction' | translate }}:</td>
+          <td class="text-center data pr-8">{{ headerData.maxHourProduction }}</td>
+        </tr>
+        <tr>
+          <td class="title" colSpan="2">
+            {{ 'Billboard.shiftClosedHead' | translate }}
+          </td>
+        </tr>
+        <tr class="orange-50">
+          <td class="title"> {{ 'Billboard.shiftClosedBy' | translate }}:</td>
+          <td class="text-center p-4" colSpan="2">
+            <input matInput placeholder="" [(ngModel)]="operatorBarcode" (keydown.enter)="onSignOffShift($event)" class="w-360 searchInput">
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+
+  </mat-card>
+
+
+</div>

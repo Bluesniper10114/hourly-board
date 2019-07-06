@@ -1,0 +1,25 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom"],
+    "baseUrl": ".",
+    "paths": {
+      "@hourly-board-workspace/shared/fuse": ["libs/shared/fuse/src/index.ts"],
+      "@hourly-board-workspace/shared/layout": [
+        "libs/shared/layout/src/index.ts"
+      ],
+      "@hourly-board-workspace/billboard": ["libs/billboard/src/index.ts"],
+      "@env/*": ["apps/hb-client/src/environments/*"],
+      "@hourly-board-workspace/login": ["libs/login/src/index.ts"],
+      "@hourly-board-workspace/planning": ["libs/planning/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

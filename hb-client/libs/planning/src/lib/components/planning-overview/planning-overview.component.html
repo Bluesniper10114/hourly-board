@@ -1,0 +1,45 @@
+<div class="page-layout carded fullwidth">
+
+  <!-- TOP BACKGROUND -->
+  <div class="top-bg accent"></div>
+  <!-- / TOP BACKGROUND -->
+
+  <!-- CENTER -->
+  <div class="center">
+
+    <!-- CONTENT HEADER -->
+    <div class="header accent p-24" fxLayout="row" fxLayoutAlign="start center">
+      <h2 class="m-0">PLANNING DATA SETS</h2>
+    </div>
+    <!-- / CONTENT HEADER -->
+
+    <!-- CONTENT CARD -->
+    <div class="content-card">
+
+      <!-- CONTENT TOOLBAR -->
+      <div class="toolbar p-16">
+
+          <hb-admin-line-date-search-header [lines]="lines$ | async"  [dates]="dates$ | async"  (getDataSets)="onGetDataSets($event)"></hb-admin-line-date-search-header>
+
+      </div>
+      <!-- / CONTENT TOOLBAR -->
+
+      <!-- CONTENT -->
+      <div class="content p-24">
+
+        <hb-admin-data-sets-table [datasets]="dataSets$ | async"></hb-admin-data-sets-table>
+
+        <div style="position: relative;text-align: center;margin-top: 50px;">
+          <ngx-spinner [visible]="loading" [config]="loadingSpinnerConfig"></ngx-spinner>
+        </div>
+
+      </div>
+      <!-- / CONTENT -->
+
+    </div>
+    <!-- / CONTENT CARD -->
+
+  </div>
+  <!-- / CENTER -->
+
+</div>

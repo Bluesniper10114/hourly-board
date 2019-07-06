@@ -1,0 +1,7 @@
+﻿CREATE FUNCTION [users].[AutomaticOperator]()
+RETURNS INT
+AS
+BEGIN
+	RETURN 1000000;
+END
+;

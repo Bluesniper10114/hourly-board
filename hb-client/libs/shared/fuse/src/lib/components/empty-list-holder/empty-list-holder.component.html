@@ -1,0 +1,18 @@
+<div fxFlex fxLayout="column" fxLayoutAlign="center center" class="p-12">
+
+  <div class="big-circle app-logo" fxLayout="column" fxLayoutAlign="center center"
+       [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+      <mat-icon class="s-64 s-md-128 mat-accent">{{ icon }}</mat-icon>
+  </div>
+
+  <span class="app-title mt-48 mb-8" [@animate]="{value:'*',params:{delay:'100ms',y:'25px'}}">
+      {{ title }}
+  </span>
+
+  <span  class="app-message" [@animate]="{value:'*',params:{delay:'200ms',y:'50px'}}">
+     {{ text }}
+  </span>
+
+
+
+</div>

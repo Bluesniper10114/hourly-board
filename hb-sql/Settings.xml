@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<Settings>
+<BuildNumber>3</BuildNumber>
+<FullVersion>0.0.3</FullVersion>
+	<RestoreScript>.\steps\restore\restore.sql</RestoreScript>
+	<PostRestoreScript>.\steps\post-deployment\run.sql</PostRestoreScript>
+	<CleanDBScript>.\steps\restore\clean_database.sql</CleanDBScript>
+<!-- This area is not used. -->
+<git>
+	<Commit>d62a8306fc33138379e7d479a1bf699f683ff2c0</Commit>
+	<Branch>develop</Branch>
+	<FilesChanged>
+	</FilesChanged>
+</git>
+<!-- Release notes in e-mail -->
+<ReleaseNotes>
+	[TRW-951 Sync live changes with dev]
+</ReleaseNotes>
+<JIRA>
+	<Item>
+	<Project>TRW</Project>
+	<IssueBaseUrl>https://profidocs.atlassian.net/browse/</IssueBaseUrl>
+	</Item>
+	<Item>
+	<Project>TRWS</Project>
+	<IssueBaseUrl>https://profidocs.atlassian.net/projects/TRWS/queues/custom/1/</IssueBaseUrl>
+	</Item>
+</JIRA>
+<Deploy>
+	<File Type="update" Applied="false">\steps\update\b03_schema_UpgradeToVersion0.0.3.sql</File>
+</Deploy>
+</Settings>
+

@@ -1,0 +1,29 @@
+parameters:
+    ignoreErrors:
+        # TODO: refactor these (comment out to activate the errors)
+        - '#Access\ to\ an\ undefined\ property\ [a-zA-Z0-9\\_]*::\$[a-zA-Z0-9]*#'
+
+        # These should always be on:
+
+        # it ignores false positives in the Former framework
+        - '#Call\ to\ an\ undefined\ static\ method\ Former\\Facades\\Former::[a-zA-Z0-9\\_]*\(\)#'
+
+        # SITE_URL declared project wide
+        - '#Constant\ SITE_URL\ not\ found.#'
+
+        # local.config.php settings use this format self::config["key"] = "xyz"
+        # - '#Accessing\ self::\$config\ outside\ of\ class\ scope#'
+        # These ones are good examples to be activated when needed. Handle with care.
+        # - '#Call\ to\ method\ createBlockBlob\(\)\ on\ an\ unknown\ class\ WindowsAzure\\Common\\WindowsAzure\\Blob\\Internal\\IBlob\.#'
+        # - '#Call\ to\ an\ undefined\ method\ SendGrid\\Client\|SendGrid\\Response::post\(\)#'
+        # - '#Constant\ SEARCH_FILTER_KEY\ not\ found.#'
+        # - '#Undefined\ variable\:\ \$[a-zA-Z0-9]*#'
+        # - '#Access\ to\ an\ undefined\ property\ [a-zA-Z0-9\\_]*::\$[a-zA-Z0-9]*#'
+        # - '#Call\ to\ an\ undefined\ static\ method\ [a-zA-Z0-9\\_]*::[a-zA-Z0-9\\_]*\(\)#'
+        # - '#Instantiated\ class\ [a-zA-Z0-9\\_]*\ not\ found#'
+        # - '#Parameter\ \$[a-zA-Z0-9\\_]*\ of\ method\ [a-zA-Z0-9\\_]*::[a-zA-Z0-9\\_]*\(\)\ has\ invalid\ typehint\ type\ [a-zA-Z0-9\\_]*#'
+        # - '#[a-zA-Z0-9\\_]*::[a-zA-Z0-9\\_]*\(\)\ does\ not\ call\ parent\ constructor\ from\ [a-zA-Z0-9\\_]*#'
+    autoload_directories:
+        - %rootDir%/../../../src/Management
+    excludes_analyse:
+        - %rootDir%/../../../admin/assets

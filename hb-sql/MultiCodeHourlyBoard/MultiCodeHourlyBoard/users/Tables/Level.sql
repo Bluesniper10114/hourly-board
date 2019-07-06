@@ -1,0 +1,6 @@
+﻿CREATE TABLE [users].[Level] (
+    [ID]    SMALLINT NOT NULL,
+    [Name] NVARCHAR (50)  NOT NULL,
+    [Help]  NVARCHAR (MAX) NULL,
+    CONSTRAINT [PK_UserLevel_ID] PRIMARY KEY CLUSTERED ([ID] ASC)
+);

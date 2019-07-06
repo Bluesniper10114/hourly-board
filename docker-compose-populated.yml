@@ -1,0 +1,83 @@
+version: '3.5'
+
+networks:
+  backend:
+
+services:
+
+  # DB server
+  mssql:
+    image: microsoft/mssql-server-linux:2017-latest
+    volumes:
+      - ${BASEDIR:-.}/hb-sql:/opt/sql
+      - ${BASEDIR:-.}/docker/sqlcmd/restore-db:/var/opt/mssql/backup
+      - ${BASEDIR:-.}/dbbk:/opt/sqlbk
+    environment:
+      - ACCEPT_EULA=y
+      - SA_PASSWORD=TestPasswordH@er@
+    ports:
+      - "1433:1433"
+    expose:
+      - 1433
+    networks:
+      - backend
+    restart: unless-stopped
+
+  # SQL provisioning container
+  # This container checks for the existence of the database, and if it doesn't exist, runs the
+  # provisioning script ./docker/sqlcmd/restore-db/restore.sql, then exits.
+  # Can also be used to get a sqlcmd shell by running 'docker-compose exec sqlcmd sqlcmd'
+  sqlcmd:
+    build: 
+      context: ${BASEDIR:-.}/docker/sqlcmd
+      dockerfile: Dockerfile
+    volumes:    
+      - ${BASEDIR:-.}/hb-sql:/opt/sql
+      - ${BASEDIR:-.}/docker/sqlcmd/restore-db:/var/opt/mssql/backup:ro
+      - ${BASEDIR:-.}/dbbk:/opt/sqlbk
+    command: ["/bin/bash", "/opt/scripts/setupDb.sh"]
+    networks:
+      - backend
+    environment:
+      - restoreDemo=1
+      - doInitialisation=0
+      - doDeployment=0
+    restart: "no"
+  # PHP Application container w/ apache
+  php:
+    build: ${BASEDIR:-.}/docker/php
+    ports:
+      - "80:80"
+    volumes:
+      - ${BASEDIR:-.}/hb-web:/var/www/html
+      - ${BASEDIR:-.}/hb-sql:/opt/sql
+      - ${BASEDIR:-.}/data/composer-cache:/root/.composer/cache/
+      - ${BASEDIR:-.}/docker/php/default-config/apache/:/etc/apache2/sites-enabled
+    environment:
+      - DB_HOST=mssql
+      - DB_NAME=MultiCodeBoard
+      - DB_USER=SA
+      - DB_PASSWORD=TestPasswordH@er@
+      - SHOW_ERRORS=true
+      - DEFAULT_LANGUAGE=en
+      - SITE_ROOT_URL=http://localhost/
+      - SITE_API_URL=http://localhost/api
+      - RUN_COMPOSER=true
+    networks:
+      - backend
+    restart: unless-stopped
+
+  # NODE.js machine for the front-end app
+  node:
+    build: ${BASEDIR:-.}/hb-client
+    # user: "node"
+    volumes:
+      - ${BASEDIR:-.}/hb-client:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - '4200:4200'
+    environment:
+      - NODE_ENV=dev
+    networks:
+      - backend
+    restart: unless-stopped

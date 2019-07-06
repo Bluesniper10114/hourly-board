@@ -1,0 +1,14 @@
+# Composer files
+vendor/
+composer.phar
+
+# Documenting code
+doc/code-doc
+doc/style-report
+
+# local settings
+settings/local.config
+settings/local.config.php
+
+# Temporary swap files
+.*.swp

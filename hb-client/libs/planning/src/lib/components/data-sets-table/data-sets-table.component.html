@@ -1,0 +1,90 @@
+<div fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="10px" *ngIf="datasets">
+
+  <mat-card class="p-12" *ngFor="let line of dataSetsGrouped" fxFlex="100%">
+
+    <ng-container *ngFor="let date of line.dates">
+      <mat-card-header class="w-100-p">
+        <mat-card-title class="w-100-p" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="10px">
+          <div fxFlex class="pt-8">
+            <span class="text-boxed accent"> Line </span> <span class="mat-headline pt-4"> {{ line.key }} </span>
+          </div>
+          <div fxFlex class="text-right pt-8">
+            <span class="text-boxed accent">Date </span> <span class="mat-title pt-4"> {{ date.key }}</span>
+          </div>
+        </mat-card-title>
+      </mat-card-header>
+
+      <div fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="10px" class="w-100-p">
+        <table class="simple clickable mat-elevation-z2" border="1">
+          <thead>
+            <tr>
+              <th class="text-center">Shift</th>
+              <th class="text-center">Billboard</th>
+              <th width="70%" class="text-center">
+                <table class="w-100-p">
+                  <thead>
+                    <tr>
+                      <th colSpan="8" class="text-center">Hourly</th>
+                    </tr>
+                    <tr>
+                      <th *ngFor="let h of hours" class="text-center"> {{ h }}</th>
+                    </tr>
+                  </thead>
+                </table>
+              </th>
+              <th class="text-center">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let ptShift of date.shifts">
+
+              <ng-container>
+
+                <td class="text-center">{{ ptShift.shift }}</td>
+                <td>
+                  <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+                    <mat-radio-group [(ngModel)]="ptShift.planningType">
+                      <mat-radio-button class="mr-8" value="DY">
+                        <small>By DY</small>
+                      </mat-radio-button>
+                      <mat-radio-button class="" value="PN">
+                        <small> By PN </small>
+                      </mat-radio-button>
+                    </mat-radio-group>
+                  </div>
+                </td>
+                <td>
+                  <table border="1" class="simple clickable">
+                    <tbody *ngFor="let plType of ptShift.planningTypes">
+                      <tr colSpan="8" class="text-center" [ngClass]="{'accent': plType.type === ptShift.planningType}" >
+                        <td *ngFor="let item of plType.targetsPerHour">{{ item }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+                <td class="text-center">
+
+                  <table border="1" class="simple clickable">
+                    <tbody *ngFor="let plType of ptShift.planningTypes">
+                      <tr colSpan="8" class="text-center" [ngClass]="{'accent': plType.type === ptShift.planningType}">
+                        <td>{{ plType.totals}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                </td>
+
+              </ng-container>
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </ng-container>
+
+  </mat-card>
+
+</div>
+
+<fuse-empty-list-holder [icon]="'error'" [title]="'No Data Found !'" [text]=" 'Use filters to select your lines & dates' "
+  *ngIf="!datasets"></fuse-empty-list-holder>

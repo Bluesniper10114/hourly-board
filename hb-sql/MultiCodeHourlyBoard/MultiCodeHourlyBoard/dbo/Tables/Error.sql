@@ -1,0 +1,20 @@
+﻿CREATE TABLE [dbo].[Error] (
+    [ID]                INT            NOT NULL,
+    [ValidEntry]        BIT            CONSTRAINT [DF_ErrorType_ValidEntry] DEFAULT ((1)) NOT NULL,
+    [Barcode]           NVARCHAR (50)  NULL,
+    [Description]       NVARCHAR (255) NOT NULL,
+    [Help]              NVARCHAR (MAX) NOT NULL,
+    [RecommendedAction] NVARCHAR (255) NULL,
+    [CriticalError]     BIT            NOT NULL,
+    [EmailSubject]      NVARCHAR (255) NULL,
+    [EmailStringFormat] NVARCHAR (255) NULL,
+    [ToEmail]           NVARCHAR (255) NULL,
+    [CCEmail]           NVARCHAR (255) NULL,
+    [BCCEmail]          NVARCHAR (255) NULL,
+    [Deleted]        BIT            CONSTRAINT [DF_Error_Deleted] DEFAULT ((0)) NOT NULL,
+    [Type]              NVARCHAR (30)  CONSTRAINT [DF_Error_Type] DEFAULT (N'Error') NOT NULL,
+    [InternalAlias]     NVARCHAR (255) NOT NULL,
+    CONSTRAINT [PK_ErrorType] PRIMARY KEY CLUSTERED ([ID] ASC),
+    CONSTRAINT [IX_Error_Barcode] UNIQUE NONCLUSTERED ([Barcode] ASC) WITH (FILLFACTOR = 90),
+    CONSTRAINT [IX_Error_InternalAlias] UNIQUE NONCLUSTERED ([InternalAlias] ASC) WITH (FILLFACTOR = 90)
+);

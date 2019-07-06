@@ -1,0 +1,59 @@
+<mat-table #table [dataSource]="dataSource" matSort [@animateStagger]="{value:'50'}" >
+
+
+  <ng-container cdkColumnDef="id">
+    <mat-header-cell *cdkHeaderCellDef mat-sort-header>ID</mat-header-cell>
+    <mat-cell *cdkCellDef="let monitor">
+      <p class="text-truncate">{{monitor.id}}</p>
+    </mat-cell>
+  </ng-container>
+
+
+  <ng-container cdkColumnDef="lineId">
+    <mat-header-cell *cdkHeaderCellDef mat-sort-header>Line ID</mat-header-cell>
+    <mat-cell *cdkCellDef="let monitor">
+      <p class="text-truncate">{{monitor.lineId}}</p>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container cdkColumnDef="location">
+    <mat-header-cell *cdkHeaderCellDef mat-sort-header>Location</mat-header-cell>
+    <mat-cell *cdkCellDef="let monitor">
+      <p>{{monitor.location}}</p>
+    </mat-cell>
+  </ng-container>
+
+
+  <ng-container cdkColumnDef="ipAddress">
+    <mat-header-cell *cdkHeaderCellDef mat-sort-header>IP Address</mat-header-cell>
+    <mat-cell *cdkCellDef="let monitor">
+      <p>{{ monitor.ipAddress }}</p>
+    </mat-cell>
+  </ng-container>
+
+
+  <ng-container cdkColumnDef="description">
+    <mat-header-cell *cdkHeaderCellDef mat-sort-header>Description</mat-header-cell>
+    <mat-cell *cdkCellDef="let monitor">
+      <p>{{ monitor.description }}</p>
+    </mat-cell>
+  </ng-container>
+
+
+
+  <ng-container cdkColumnDef="locationName">
+    <mat-header-cell *cdkHeaderCellDef mat-sort-header>Location Name</mat-header-cell>
+    <mat-cell *cdkCellDef="let monitor">
+      <p class="text-truncate">{{monitor.locationName}}</p>
+    </mat-cell>
+  </ng-container>
+
+
+
+  <mat-header-row *cdkHeaderRowDef="displayedColumns;sticky:true"></mat-header-row>
+
+  <mat-row *cdkRowDef="let monitor; columns: displayedColumns;" class="product" (click)="onOpenMonitorById(monitor.id)"
+    matRipple [@animate]="{value:'*',params:{y:'100%'}}">
+  </mat-row>
+
+</mat-table>

@@ -1,0 +1,9 @@
+[submodule "hb-sql"]
+	path = hb-sql
+	url = https://bitbucket.org/poweb/hb-sql.git
+[submodule "hb-web"]
+	path = hb-web
+	url = https://bitbucket.org/poweb/hb-web.git
+[submodule "hb-client"]
+	path = hb-client
+	url = https://bitbucket.org/poweb/hb-client.git

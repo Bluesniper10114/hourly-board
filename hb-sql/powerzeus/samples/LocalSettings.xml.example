@@ -1,0 +1,65 @@
+﻿<Settings>
+    <GitBaseFolder>..\</GitBaseFolder>
+    <DeploymentScriptsFile>deploy\deploy_scripts.csv</DeploymentScriptsFile>
+    <BackUpFolder>..\..\..\bak</BackUpFolder>
+    <RestoreScript>powerzeus\scripts\restore_database.sql</RestoreScript>
+    <PostRestoreScript>deploy\restore\restore_postScript.sql</PostRestoreScript>
+    <CleanDBScript>deploy\restore\restore_clean_database.sql</CleanDBScript>
+    <VersionSettings>.\Settings.xml</VersionSettings>
+    <Email>
+            <SubjectBefore>Update-ul TRW Train a inceput</SubjectBefore>
+            <SubjectAfter>Update-ul TRW Train s-a incheiat</SubjectAfter>
+            <SubjectOnError>Update-ul TRW Train a intampinat o eroare</SubjectOnError>
+            
+            <DetailsBefore>Update-ul TRW Train a inceput pentru versiunea  $($generalSettings.Version) <br/> Noua versiune aduce urmatoarele modificari: <br/>
+                                                             <ul>  $($generalSettings.ReleaseNotes) </ul></DetailsBefore>
+            <DetailsAfter>Update-ul TRW Train s-a incheiat cu succes pentru versiunea $($generalSettings.Version). In aproximativ 10 minute puteti relua activitatea.</DetailsAfter>
+            <CallToActionBefore>Nu scanati! Pe durata update-ului, TRW Train este dezactivat. Dezactivarea TRW train se face in fiecare locatie, iar procesul de activare poate dura pana la 10 minute</CallToActionBefore>
+            <CallToActionAfter>Reluati activitatatea in 10 minute</CallToActionAfter>
+            <DeadlinesBefore>Update-ul a inceput la $startDate si poate dura cateva minute. Veti primi un e-mail de confirmare atunci cand update-ul s-a incheiat.</DeadlinesBefore>
+            <DeadlinesAfter>Update-ul s-a incheiat la $endDate</DeadlinesAfter>
+    </Email>
+
+    <Target>
+        <Name>debug</Name>
+        <DatabaseServer>.\MSSQL2012EXPRESS</DatabaseServer>
+    	<BackUpFile>trwtrain.bak</BackUpFile>
+        <DbFileName>trwtrain</DbFileName>
+        <RestoreLocation>C:\Program Files\Microsoft SQL Server\MSSQL11.MSSQL2012EXPRESS\MSSQL\DATA</RestoreLocation>
+        <DatabaseName>trwtrain</DatabaseName>
+        <Email>
+            <HtmlTemplate>.\deploy\email_template.html</HtmlTemplate>
+            <From>trw@profidocs.com</From>
+            <AudienceText>Developer</AudienceText>
+            <Send>False</Send>
+            <To>
+                <Address>Marian Brostean &lt;marianb@profidocs.com&gt;</Address>
+                <Address>Catalin Miron &lt;catalin@profidocs.com&gt;</Address>
+                <Address>Cristi Dinu &lt;cristian.dinu@profidocs.com&gt;</Address>
+            </To>
+            <Server>mail.profidocs.com</Server>
+        </Email>
+    </Target>   
+    <Target>
+        <Name>release</Name>
+        <DatabaseServer>.\MSSQL2012EXPRESS</DatabaseServer>
+    	<BackUpFile>trwtrain.bak</BackUpFile>
+        <DbFileName>trwtrain</DbFileName>
+        <RestoreLocation>C:\Program Files\Microsoft SQL Server\MSSQL11.MSSQL2012EXPRESS\MSSQL\DATA</RestoreLocation>
+        <DatabaseName>trwtrain</DatabaseName>
+        <Email>
+            <HtmlTemplate>.\deploy\email_template.html</HtmlTemplate>
+            <From>MultiCodeTrain@trw.com</From>
+            <AudienceText>Business Owner</AudienceText>
+            <Send>True</Send>
+            <To>
+                <Address>ProfiDOCS TRW &lt;trw@profidocs.com&gt;</Address>
+                <Address>IT TRW &lt;timisoarro-it-all@trw.com&gt;</Address>
+                <Address>Iulian Piele &lt;iulian.piele@trw.com&gt;</Address>
+                <Address>Rares Niciu &lt;Rares.Niciu@zf.com&gt;</Address>
+                <Address>Marius Moise &lt;marius.moise@trw.com&gt;</Address>
+            </To>
+            <Server>glpi.timro.trw.com</Server>
+        </Email>
+    </Target>    			
+</Settings>

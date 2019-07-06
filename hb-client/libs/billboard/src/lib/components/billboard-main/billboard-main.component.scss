@@ -1,0 +1,16 @@
+:host {
+  max-width: 1440px;
+
+  ::ng-deep .searchInput {
+    padding: 10px;
+    border: 1px solid #dddd;
+    background: rgba(255, 255, 255, 0.7);
+  }
+
+  .select-message-text {
+    font-size: 18px;
+    font-weight: 300;
+    text-shadow: 3px 3px 3px #191818;
+  }
+
+}

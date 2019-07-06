@@ -1,0 +1,30 @@
+<mat-toolbar>
+
+  <div fxLayout="row" fxLayoutAlign="center center" fxLayoutAlign.gt-xs="space-between center" fxFlex style="position: relative">
+
+    <div fxLayout="row" fxLayoutAlign="center center" fxFlex>
+      <p>{{ footerData.softwareVersionLine }}</p>
+    </div>
+
+    <div fxFlex="auto" fxLayout="row" fxLayoutAlign="center center">
+      <p>
+        {{ footerData.copyrightLine }}
+      </p>
+    </div>
+
+    <div  fxLayout="row" fxLayoutAlign="center center" fxFlex>
+
+      <p class="text-right p-4 m-4" >
+        <span class="text-boxed accent">
+          {{ 'loadingMessage' | translate }} {{ display }}
+        </span>
+      </p>
+
+    </div>
+
+
+    <ngx-spinner [visible]="loading" [config]="config"></ngx-spinner>
+
+  </div>
+
+</mat-toolbar>

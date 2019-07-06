@@ -1,0 +1,38 @@
+:host {
+  table.header-table {
+
+    tr {
+      max-height: 46px;
+      height: 45px;
+      min-height: 46px;
+
+      td.img-td {
+        width: 100px;
+        margin: 0 auto;
+        padding: 0;
+        vertical-align: top;
+        text-align: right;
+      }
+
+      td.title {
+        color: #303A4B;
+        font-size: 18px;
+        font-weight: 500;
+        letter-spacing: 0.35px;
+        line-height: 24px;
+      }
+
+      td.data {
+        color: #6086FF;
+        font-size: 18px;
+        font-weight: bold;
+        line-height: 24px;
+        text-align: center;
+      }
+
+
+    }
+
+  }
+
+}

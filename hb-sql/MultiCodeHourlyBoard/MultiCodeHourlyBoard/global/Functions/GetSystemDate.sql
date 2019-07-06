@@ -1,0 +1,5 @@
+﻿CREATE FUNCTION [global].[GetSystemDate]()
+RETURNS DATETIME AS 
+BEGIN
+	RETURN GetDate()
+END

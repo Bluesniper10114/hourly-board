@@ -1,0 +1,1 @@
+backup database MultiCodeBoard to disk ='/opt/sqlbk/MultiCodeBoard.bak' with compression

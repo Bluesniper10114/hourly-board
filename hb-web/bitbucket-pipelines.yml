@@ -1,0 +1,56 @@
+# image: benyanke/phpbuildimg:latest
+# image: php:7.1.1
+image: ubuntu
+
+# Only get the most recent version
+clone:
+  depth: 1
+
+pipelines:
+    # Run linting and phpstan tests on all branches
+    default:
+      - step:
+          name: Lint Scripts
+          trigger: automatic
+          caches:
+            - composer
+          script:
+            #
+            # Install needed tooling
+            #
+            - export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -y git apt-transport-https ca-certificates curl software-properties-common && add-apt-repository ppa:ondrej/php -y && apt-get update && apt-get install -y unzip php7.2 php7.2-gd php7.2-xml php-mbstring php7.2-opcache php7.2-mbstring php7.2-zip
+
+            #
+            # Environment config for easier debugging later
+            #
+            - env | grep "BITBUCKET"
+            - env | grep -v "BITBUCKET"
+            # - composer -V
+            - php -v
+
+            #
+            # Setup Composer
+            #
+            - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+            - composer show -ti
+            - composer install --no-progress || composer install --no-progress || composer install --no-progress || composer install --no-progress
+
+            
+            #
+            # Config setup
+            #
+#            - ls settings
+            - cp settings/local.config.php.example settings/local.config.php
+            - cat settings/local.config.php
+#            - ls settings
+            
+            #
+            # Run linting script and syntax checking
+            #
+            - bash ./build-scripts/lint.sh
+            - bash ./build-scripts/syntaxCheck.sh
+
+            #
+            # PHPstan
+            #
+            - php vendor/bin/phpstan analyse --configuration=phpstan.neon --level=max src mvc-php settings language management api

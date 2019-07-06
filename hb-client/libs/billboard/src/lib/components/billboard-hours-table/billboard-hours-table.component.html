@@ -1,0 +1,121 @@
+<mat-card fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="10px" class="p-0">
+  <table class="simple bordered billboard-table">
+    <thead>
+      <tr>
+        <th class="w-68 billboard-th "> <span [innerHtml]=" 'Billboard.hourlyInterval' | translate"></span> </th>
+        <th class="billboard-th text-center"> <span [innerHtml]=" 'Billboard.target' | translate"></span> </th>
+        <th class="billboard-th text-center"> <span [innerHtml]=" 'Billboard.achieved' | translate"></span> </th>
+        <th class="billboard-th text-center"> <span [innerHtml]=" 'Billboard.cumulativeTarget' | translate"></span>
+        </th>
+        <th class="billboard-th text-center"> <span [innerHtml]=" 'Billboard.cumulativeAchieved' | translate"></span>
+        </th>
+        <th class="billboard-th text-center"> <span [innerHtml]=" 'Billboard.defects' | translate"></span> </th>
+        <th class="billboard-th text-center"> <span [innerHtml]=" 'Billboard.downtime' | translate"></span> </th>
+        <th class="w-340 billboard-th text-center"> <span [innerHtml]=" 'Billboard.comments' | translate"></span> </th>
+        <th class="billboard-th text-center"> <span [innerHtml]=" 'Billboard.escalated' | translate"></span> </th>
+        <th class="billboard-th text-center"> <span [innerHtml]=" 'Billboard.intervalClosedBy' | translate"></span></th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr *ngFor="let hour of hoursData" [ngClass]="{'blue-50': hour.firstOpen}">
+        <td class="w-68  interval-td">{{ hour.hourInterval }}</td>
+        <td class="number">{{ hour.target }}</td>
+        <td class="number"> <span [ngClass]="{'warn-fg': hour.achieved < hour.target }">{{ hour.achieved }}</span></td>
+        <td class="number">{{ hour.cumulativeTarget }}</td>
+        <td class="number"> <span [ngClass]="{'warn-fg': hour.cumulativeAchieved < hour.cumulativeTarget }"> {{
+            hour.cumulativeAchieved }}</span></td>
+        <td class="number">{{ hour.defects }}</td>
+        <td class="number accent-fg">
+          <a (click)="onOpenDownTime(hour)" class="pointer-cursor" *ngIf="hour.downtime > 0">
+            {{ hour.downtime }}
+          </a>
+          <span *ngIf="hour.downtime === 0">
+            {{ hour.downtime }}
+          </span>
+        </td>
+        <td class="w-340 " [ngClass]="{'pt-0 pb-0': hour.commentsArray.length}">
+
+          <div *ngIf="!hour.comments" class=" text-center">
+            <button type="button" mat-button color="accent" *ngIf="hour.firstOpen" (click)="onAddComment(hour)">{{
+              'Billboard.comments' | translate }}</button>
+          </div>
+
+          <div *ngIf="hour.comments" fxLayout="row" fxLayoutAlign="space-between center" class="text-left">
+
+            <ul fxFlex class="m-0" *ngIf="hour.firstOpen">
+              <li *ngFor="let str of hour.commentsArray.slice(0,2)">
+                <p>
+                  <span class="text-boxed">{{ str }}</span>
+                </p>
+              </li>
+            </ul>
+
+            <div *ngIf="!hour.firstOpen">
+              {{ hour.comments }}
+            </div>
+
+            <button type="button" fxFlex mat-icon-button color="accent" *ngIf="hour.firstOpen" [matTooltip]=" 'Billboard.editComments' | translate "
+              (click)="onEditComments(hour)">
+              <mat-icon class="mat-18">edit</mat-icon>
+            </button>
+
+          </div>
+
+        </td>
+        <td class=" text-center" [ngClass]="{'pt-0 pb-0': hour.escalationsArray.length}">
+
+          <div *ngIf="hour.escalations" fxLayout="row" fxLayoutAlign="space-between center" class="text-left">
+
+            <ul fxFlex class="m-0" *ngIf="hour.firstOpen">
+              <li *ngFor="let str of hour.escalationsArray.slice(0,2)">
+                <p>
+                  <span class="text-boxed">{{ str }}</span>
+                </p>
+              </li>
+            </ul>
+
+            <div *ngIf="!hour.firstOpen">
+              {{ hour.escalations }}
+            </div>
+
+            <button type="button" fxFlex mat-icon-button color="accent" *ngIf="hour.firstOpen" [matTooltip]=" 'Billboard.editEscalations' | translate "
+              (click)="onEditEscalations(hour)">
+              <mat-icon class="mat-18">edit</mat-icon>
+            </button>
+
+          </div>
+
+          <div *ngIf="!hour.escalations.length" class="text-center">
+            <button type="button" mat-button color="accent" *ngIf="hour.firstOpen" (click)="onAddEscalation(hour)">{{
+              'Billboard.escalated' | translate }}</button>
+          </div>
+
+        </td>
+        <td class="text-center">
+
+          <input matInput placeholder="" [(ngModel)]="hour.signoff" *ngIf="hour.firstOpen" (keydown.enter)="onSignOffHour($event,hour)"
+            class="searchInput w-120">
+          <span *ngIf="!hour.firstOpen"> {{ hour.signoff }}</span>
+        </td>
+
+      </tr>
+
+    </tbody>
+    <tfoot>
+      <tr>
+        <td class=" interval-td">{{ 'Billboard.total' | translate }} </td>
+        <td class="number"> {{ totals.totalTargets }} </td>
+        <td class="number"> <span [ngClass]="{'warn-fg': totals.totalAchieved < totals.totalTargets }"> {{
+            totals.totalAchieved }}</span> </td>
+        <td></td>
+        <td></td>
+        <td class="number"> {{ totals.totalDefects }} </td>
+        <td class="number accent-fg"> {{ totals.totalDowntime }} </td>
+        <td class=""></td>
+        <td class=""></td>
+        <td class=""></td>
+      </tr>
+    </tfoot>
+  </table>
+</mat-card>

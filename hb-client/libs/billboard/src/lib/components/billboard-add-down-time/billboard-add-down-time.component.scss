@@ -1,0 +1,29 @@
+:host {
+
+  table.simple {
+
+    thead {
+      tr {
+        th.th-title {
+          color: #303A4B;
+          font-weight: 500;
+          letter-spacing: 0.23px;
+          line-height: 16px;
+        }
+      }
+    }
+
+    ::ng-deep .no-input {
+      color: #303A4B;
+      font-family: 'Roboto';
+      letter-spacing: -0.01px;
+      line-height: 19px;
+      border: none;
+      background: none;
+      padding: 0;
+      max-width: 120px;
+    }
+
+  }
+
+}

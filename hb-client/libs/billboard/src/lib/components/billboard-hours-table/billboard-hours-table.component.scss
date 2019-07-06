@@ -1,0 +1,68 @@
+:host {
+  table.billboard-table {
+    border-collapse: collapse;
+
+    thead {
+      tr {
+        ::ng-deep th.billboard-th {
+          color: #303A4B;
+          font-size: 15px;
+          font-weight: bold;
+          letter-spacing: -0.29px;
+          line-height: 18px;
+          padding: 16px 8px;
+          font-weight: 600;
+          white-space: normal;
+          background-color: #F5F6FA;
+          border: 1px solid #979797;
+        }
+      }
+
+    }
+
+    tbody,
+    tfoot {
+      tr {
+        td {
+          border: 1px solid #979797;
+          padding: 10px 8px;
+        }
+
+        td.interval-td {
+          color: #303A4B;
+          font-size: 20px;
+          letter-spacing: -0.39px;
+          line-height: 26px;
+          text-align: center;
+          padding-left: 0;
+        }
+
+        td.number,
+        .number {
+          color: #303A4B;
+          font-size: 42px;
+          font-weight: 900;
+          letter-spacing: -0.81px;
+          line-height: 55px;
+          text-align: center;
+        }
+
+        .number {
+          font-size: 42px;
+          font-weight: 900;
+          letter-spacing: -0.81px;
+          line-height: 55px;
+          text-align: center;
+        }
+
+      }
+    }
+
+    tfoot tr {
+      background-color: #F5F6FA;
+    }
+
+
+  }
+
+}

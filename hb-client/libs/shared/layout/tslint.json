@@ -1,0 +1,17 @@
+{
+  "extends": "../../../tslint.json",
+  "rules": {
+    "directive-selector": [
+      true,
+      "attribute",
+      "hourly-board-workspace",
+      "camelCase"
+    ],
+    "component-selector": [
+      true,
+      "element",
+      "hourly-board-workspace",
+      "kebab-case"
+    ]
+  }
+}

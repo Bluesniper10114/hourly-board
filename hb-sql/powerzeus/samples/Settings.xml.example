@@ -1,0 +1,14 @@
+<Settings>
+  <BuildNumber>55</BuildNumber>
+  <FullVersion>4.0.8</FullVersion>
+  <git>
+    <Commit>781a8d97db9bf7f7e69eb16659ded8edbcfcefe6</Commit>
+    <Branch>develop</Branch>
+    <FilesChanged>
+</FilesChanged>
+  </git>
+  <ReleaseNotes>
+        [Change 1]
+        [Change 2]
+    </ReleaseNotes>
+</Settings>

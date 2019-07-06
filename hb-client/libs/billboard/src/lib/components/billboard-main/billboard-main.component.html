@@ -1,0 +1,38 @@
+<div class="page-layout blank pt-8 pr-12 pl-12 pb-8" fusePerfectScrollbar *ngIf="billboardData$ | async as billboard"
+  fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="5px">
+
+  <div fxFlex="auto" class="w-100-p">
+
+    <hb-billboard-header [headerData]="billboard.header" (signOffShift)="onSignOffShift($event)" [@animate]="{value:'*',params:{y:'-150px',delay:'400ms'}}"></hb-billboard-header>
+
+  </div>
+
+
+  <div fxFlex="auto" class="w-100-p ">
+
+    <hb-billboard-hours-table [hoursData]="billboard.hours" [totals]="billboard.totals" (addEscalation)="onAddEscalation($event)"
+      (editEscalation)="onEditEscalations($event)" (addComment)="onAddComment($event)" (editComment)="onEditComment($event)"
+      (signOffHour)="onSignOffHour($event)" (openDownTime)="onOpenDownTime($event)" ></hb-billboard-hours-table>
+
+
+  </div>
+
+
+  <div fxFlex="auto" class="w-100-p" *ngIf="footerData$ | async as footerData">
+
+    <hb-billboard-footer [footerData]="footerData" [display]="display" [loading]="loading" [@animate]="{value:'*',params:{y:'-150px'}}"></hb-billboard-footer>
+
+  </div>
+
+</div>
+
+<div *ngIf="!billboardDataLoaded " class="text-center w-100-p" fxLayout="column" fxLayoutAlign="center center" fxFlex
+  style="min-height: 400px;">
+  <mat-card class="select-message-text accent p-16 " [@animate]="{value:'*',params:{delay:'400ms'}}">
+    <span>Setting Up Billboard  ......</span>
+  </mat-card>
+
+  <div style="position: relative;text-align: center;margin-top: 50px;">
+    <ngx-spinner [visible]="!billboardDataLoaded" [config]="loadingSpinnerConfig"></ngx-spinner>
+  </div>
+</div>

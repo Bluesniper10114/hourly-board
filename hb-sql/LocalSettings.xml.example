@@ -1,0 +1,46 @@
+﻿<Settings>
+	<GitBaseFolder>c:\developer\hourlyboard\sql</GitBaseFolder>
+	<BackUpFolder>>c:\developer\hourlyboard\bak</BackUpFolder>
+	<MapNetwork>false</MapNetwork>
+	<Email>
+    <!-- Email contents on error -->
+		<SubjectOnError>Hourly Board update has encountered an error</SubjectOnError>
+    <!-- Email contents when the update begins -->
+		<SubjectBefore>Hourly Board update has started</SubjectBefore>
+		<CallToActionBefore>Do not use the system while updating!</CallToActionBefore>
+		<DetailsBefore>The update has started <br/>
+						The new version brings the following updates: <br/>
+						<ul> $($versionSettings.ReleaseNotes) </ul></DetailsBefore>
+		<DeadlinesBefore>The update has started and will take about 10 minutes. You will receive an e-mail update once it has finished.</DeadlinesBefore>
+
+    <!-- Email contents when the update has ended -->
+		<SubjectAfter>Hourly Board update has finished</SubjectAfter>
+		<CallToActionAfter>You can resume work in about 10 minutes</CallToActionAfter>
+		<DetailsAfter>The update has finished successfully. You can start functioning normally shortly.</DetailsAfter>
+		<DeadlinesAfter>The update has finished</DeadlinesAfter>
+	</Email>
+
+	<Target>
+		<Name>debug</Name>
+		<OptimizeSpeed>True</OptimizeSpeed>
+        <!-- Path to MS SQL server and instance. -->
+ 		<DatabaseServer>.\MSSQL2012ENT</DatabaseServer>
+		<BackUpFile>MultiCodeBoard-1.bak</BackUpFile>
+		<DbFileName>MultiCodeBoard</DbFileName>
+        <!--Typical location is C:\Program Files\Microsoft SQL Server\MSSQL11.[InstanceName]\MSSQL\DATA-->
+        <!---->
+		<RestoreLocation>C:\Program Files\Microsoft SQL Server\MSSQL11.MSSQL2012ENT\MSSQL\DATA</RestoreLocation>
+		<DatabaseName>MultiCodeBoard</DatabaseName>
+		<Email>
+			<HtmlTemplate>.\email_template.html</HtmlTemplate>
+			<From>marianb@profidocs.com</From>
+			<AudienceText>Developer</AudienceText>
+			<Send>False</Send>
+			<To>
+				<Address>Marian Brostean &lt;marianb@profidocs.com&gt;</Address>
+				<Address>Cristi Dinu &lt;cristian.dinu@profidocs.com&gt;</Address>
+			</To>
+			<Server>mail.profidocs.com</Server>
+		</Email>
+	</Target>
+</Settings>

@@ -1,0 +1,274 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>MultiCodeHourlyBoard</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{627ccd4d-2bc9-498d-b785-cc6e4067c68e}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql110DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>MultiCodeHourlyBoard</RootNamespace>
+    <AssemblyName>MultiCodeHourlyBoard</AssemblyName>
+    <ModelCollation>1033,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="layout" />
+    <Folder Include="layout\Tables" />
+    <Folder Include="target\" />
+    <Folder Include="target\Tables\" />
+    <Folder Include="Security\" />
+    <Folder Include="Users\" />
+    <Folder Include="Users\Tables\" />
+    <Folder Include="Users\Views\" />
+    <Folder Include="Users\Functions\" />
+    <Folder Include="Users\Stored Procedures\" />
+    <Folder Include="log" />
+    <Folder Include="log\Tables" />
+    <Folder Include="log\Views" />
+    <Folder Include="log\Functions" />
+    <Folder Include="log\Stored Procedures" />
+    <Folder Include="ver\" />
+    <Folder Include="ver\Tables\" />
+    <Folder Include="dbo\Stored Procedures\" />
+    <Folder Include="ver\Stored Procedures\" />
+    <Folder Include="global" />
+    <Folder Include="global\Functions" />
+    <Folder Include="global\Stored Procedures" />
+    <Folder Include="global\Tables" />
+    <Folder Include="layout\Stored Procedures" />
+    <Folder Include="dbo\Functions" />
+    <Folder Include="target\Stored Procedures" />
+    <Folder Include="layout\Views" />
+    <Folder Include="dbo\Views" />
+    <Folder Include="target\Views" />
+    <Folder Include="report" />
+    <Folder Include="report\Stored procedures" />
+    <Folder Include="report\Views" />
+    <Folder Include="import\" />
+    <Folder Include="import\Tables\" />
+    <Folder Include="import\Views\" />
+    <Folder Include="report\Functions\" />
+    <Folder Include="import\Stored Procedures\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\BillboardLog.sql" />
+    <Build Include="dbo\Tables\ShiftLogSignOff.sql" />
+    <Build Include="layout\Tables\Cell.sql" />
+    <Build Include="layout\Tables\Line.sql" />
+    <Build Include="dbo\Tables\ShiftLog.sql" />
+    <Build Include="dbo\Tables\ShiftLogBreak.sql" />
+    <Build Include="target\Tables\Daily.sql" />
+    <Build Include="target\Tables\Hourly.sql" />
+    <Build Include="layout\Tables\PartNumber.sql" />
+    <Build Include="layout\Tables\Workbench.sql" />
+    <Build Include="target\Tables\PartNumber.sql" />
+    <Build Include="Security\layout.sql" />
+    <Build Include="Security\target.sql" />
+    <Build Include="Security\users.sql" />
+    <Build Include="Users\Tables\Account.sql" />
+    <Build Include="Users\Tables\AccountLoginHistory.sql" />
+    <Build Include="Users\Tables\AccountProvider.sql" />
+    <Build Include="Users\Tables\AccountToken.sql" />
+    <Build Include="Users\Tables\Level.sql" />
+    <Build Include="Users\Tables\Operator.sql" />
+    <Build Include="Users\Tables\Profile.sql" />
+    <Build Include="Users\Views\vLoggedInUsers.sql" />
+    <Build Include="Users\Functions\TokenExpirationInSeconds.sql" />
+    <Build Include="Users\Stored Procedures\AddUser.sql" />
+    <Build Include="Users\Stored Procedures\ChangeMyPassword.sql" />
+    <Build Include="Users\Stored Procedures\ChangePasswordForProfile.sql" />
+    <Build Include="Users\Stored Procedures\ClearExpiredTokens.sql" />
+    <Build Include="Users\Stored Procedures\DeleteUser.sql" />
+    <Build Include="Users\Stored Procedures\ForceLogoutIfTokensHaveExpired.sql" />
+    <Build Include="Users\Stored Procedures\InsertOrUpdateToken.sql" />
+    <Build Include="Users\Stored Procedures\Login.sql" />
+    <Build Include="Users\Stored Procedures\Logout.sql" />
+    <Build Include="Users\Stored Procedures\RegisterUserFromOperator.sql" />
+    <Build Include="Log\Tables\Procedure.sql" />
+    <Build Include="Log\Tables\ProcedureLog.sql" />
+    <Build Include="Log\Views\vProcedureLog.sql" />
+    <Build Include="Log\Functions\GetProcedureID.sql" />
+    <Build Include="Log\Stored Procedures\LogError.sql" />
+    <Build Include="Log\Stored Procedures\LogErrorInfo.sql" />
+    <Build Include="Security\log.sql" />
+    <Build Include="Users\Functions\IsTokenValid.sql" />
+    <Build Include="Users\Stored Procedures\GetProfileIdFromToken.sql" />
+    <Build Include="dbo\Tables\Error.sql" />
+    <Build Include="ver\Tables\Tables.sql" />
+    <Build Include="ver\Tables\Version.sql" />
+    <Build Include="dbo\Stored Procedures\uspGetErrorInfo.sql" />
+    <Build Include="Users\Stored Procedures\GetProfileFromId.sql" />
+    <Build Include="Users\Stored Procedures\GetWorkerUserLevels.sql" />
+    <Build Include="Users\Stored Procedures\LoginOnWorkbench.sql" />
+    <Build Include="ver\Stored Procedures\MarkVersion.sql" />
+    <Build Include="Security\ver.sql" />
+    <Build Include="layout\Tables\WorkbenchStatus.sql" />
+    <Build Include="layout\Tables\WorkbenchType.sql" />
+    <Build Include="layout\Tables\Location.sql" />
+    <Build Include="Users\Tables\Feature.sql" />
+    <Build Include="dbo\Tables\ActualsLog.sql" />
+    <Build Include="layout\Tables\Monitor.sql" />
+    <Build Include="dbo\Tables\CommentsDictionary.sql" />
+    <Build Include="dbo\Tables\EscalatedDictionary.sql" />
+    <Build Include="Users\Stored Procedures\GetRights.sql" />
+    <Build Include="global\Functions\GetDate.sql" />
+    <Build Include="global\Stored Procedures\CheckObjectID.sql" />
+    <Build Include="Security\global.sql" />
+    <Build Include="global\Stored Procedures\TraceError.sql" />
+    <Build Include="global\Tables\Setting.sql" />
+    <Build Include="global\Stored Procedures\GetSettingKeyValue.sql" />
+    <Build Include="Users\Stored Procedures\SaveRights.sql" />
+    <Build Include="dbo\Stored Procedures\GetBreaks.sql" />
+    <Build Include="layout\Stored Procedures\GetProductionLines.sql" />
+    <Build Include="global\Functions\NextMonday.sql" />
+    <Build Include="dbo\Stored Procedures\SaveBreaks.sql" />
+    <Build Include="target\Stored Procedures\GetPlanningDataSets.sql" />
+    <Build Include="layout\Stored Procedures\AddMonitor.sql" />
+    <Build Include="layout\Stored Procedures\EditMonitor.sql" />
+    <Build Include="layout\Stored Procedures\DeleteMonitor.sql" />
+    <Build Include="layout\Views\vActiveMonitors.sql" />
+    <Build Include="dbo\Views\vShiftLog.sql" />
+    <Build Include="dbo\Stored Procedures\GetBillboard.sql" />
+    <Build Include="layout\Views\vActiveLines.sql" />
+    <Build Include="dbo\Stored Procedures\BillboardSaveComment.sql" />
+    <Build Include="target\Tables\Type.sql" />
+    <Build Include="dbo\Stored Procedures\BillboardSaveEscalated.sql" />
+    <Build Include="dbo\Stored Procedures\BillboardHourSignOff.sql" />
+    <Build Include="global\Stored Procedures\CheckObjectBarcode.sql" />
+    <Build Include="dbo\Stored Procedures\BillboardShiftSignOff.sql" />
+    <Build Include="target\Views\vHourly.sql" />
+    <Build Include="dbo\Views\vBillboardLog.sql" />
+    <Build Include="dbo\Tables\Downtime.sql" />
+    <Build Include="dbo\Tables\DowntimeDetails.sql" />
+    <Build Include="dbo\Stored Procedures\GetDowntime.sql" />
+    <Build Include="dbo\Stored Procedures\SaveDowntime.sql" />
+    <Build Include="target\Views\vDaily.sql" />
+    <Build Include="target\Stored Procedures\GetTargetByDay.sql" />
+    <Build Include="layout\LineCatalog.sql" />
+    <Build Include="target\Stored Procedures\SaveTargetByDay.sql" />
+    <Build Include="layout\Views\vActivePartNumbers.sql" />
+    <Build Include="target\Stored Procedures\GetTargetByPartNumber.sql" />
+    <Build Include="target\Stored Procedures\SaveTargetByPartNumber.sql" />
+    <Build Include="dbo\Tables\DowntimeDictionary.sql" />
+    <Build Include="target\Stored Procedures\SetOnBillboard.sql" />
+    <Build Include="UserDefinedDataType_idTable.sql" />
+    <Build Include="target\Stored Procedures\SetBillboardOnByIDList.sql" />
+    <Build Include="layout\Tables\LineTag.sql" />
+    <Build Include="Security\report.sql" />
+    <Build Include="report\Stored procedures\HistoricalShift.sql" />
+    <Build Include="report\Views\vActualsVsTargetAndNotOK.sql" />
+    <Build Include="report\Views\vDowntimeReason.sql" />
+    <Build Include="report\Views\vShiftType.sql" />
+    <Build Include="report\Views\vLine.sql" />
+    <Build Include="report\Views\vMonth.sql" />
+    <Build Include="report\Stored procedures\ActualsVsTargetAndNotOK.sql" />
+    <Build Include="report\Stored procedures\DowntimeReason.sql" />
+    <Build Include="import\Tables\ActualsLogDeletedErrors.sql" />
+    <Build Include="import\Tables\ActualsLogErrors.sql" />
+    <Build Include="import\Tables\ActualsLog.sql" />
+    <Build Include="import\Tables\Machine.sql" />
+    <Build Include="import\Tables\ActualsLogChanges.sql" />
+    <Build Include="layout\Views\vWorkbench.sql" />
+    <Build Include="dbo\Views\vFistOpenLineShiftLog.sql" />
+    <Build Include="dbo\Views\vActualsLog.sql" />
+    <Build Include="import\Views\vMachine.sql" />
+    <Build Include="import\Views\vActualsLogErrors.sql" />
+    <Build Include="Users\Functions\AutomaticOperator.sql" />
+    <Build Include="dbo\Functions\ftBillboardDowntime.sql" />
+    <Build Include="report\Functions\Split.sql" />
+    <Build Include="target\Stored Procedures\AddTargetAutomatic.sql" />
+    <Build Include="dbo\Stored Procedures\BillboardUpdateActuals.sql" />
+    <Build Include="dbo\Stored Procedures\BillboardAutomaticSignOff.sql" />
+    <Build Include="import\Stored Procedures\GetActualsLog.sql" />
+    <Build Include="Security\import.sql" />
+    <Build Include="dbo\Stored Procedures\GetBillboardv1.sql" />
+    <Build Include="dbo\Stored Procedures\SaveDowntimev1.sql" />
+    <Build Include="global\Functions\GetFixedDate.sql" />
+    <Build Include="global\Functions\GetSystemDate.sql" />
+    <Build Include="global\Functions\GetDateProxy.sql" />
+    <Build Include="target\Stored Procedures\AddTargetAutomaticv1.sql" />
+    <Build Include="target\Stored Procedures\GetPlanningDataSetsv1.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="MultiCodeHourlyBoard.publish.xml" />
+    <None Include="Local_MultiCodeHourlyBoard.publish.xml" />
+    <None Include="SqlSchemaCompare.scmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="MultiCodeHourlyBoard.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Script.AddInitialValues.sql" />
+    <PostDeploy Include="Script.PostDeployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <SqlCmdVariable Include="gitBaseFolder">
+      <DefaultValue>.</DefaultValue>
+      <Value>$(SqlCmdVar__1)</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="__populateDatabase">
+      <DefaultValue>False</DefaultValue>
+      <Value>$(SqlCmdVar__3)</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="relativeProjectPath">
+      <DefaultValue>/</DefaultValue>
+      <Value>$(SqlCmdVar__2)</Value>
+    </SqlCmdVariable>
+  </ItemGroup>
+  <ItemGroup>
+    <ArtifactReference Include="C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\IDE\Extensions\Microsoft\SQLDB\Extensions\SqlServer\110\SqlSchemas\master.dacpac">
+      <HintPath>$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\110\SqlSchemas\master.dacpac</HintPath>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseVariableLiteralValue>master</DatabaseVariableLiteralValue>
+    </ArtifactReference>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,19 @@
+<?php
+use Settings\Config;
+
+// place this file outside of the source code folder, at the same level
+Config::$config["DB_HOST"] = "your-database-host"; // server name, e.g. servername.westeurope.cloudapp.azure.com
+Config::$config["DB_NAME"] = "your-database-name";
+Config::$config["DB_USER"] = "your-database-user";
+Config::$config["DB_PASSWORD"] = "your-database-password";
+Config::$config["SHOW_ERRORS"] = true; // for debug purposes, this should be set to "TRUE"
+
+Config::$config["siteurl"] = "[Base site url here, with '/']"; // full admin website URL; e.g. http://localhost/admin/
+Config::$config["apiurl"] = "[API url here, with '/']"; // full api website URL; e.g. http://localhost/api/
+
+// this configures the planning methods available
+Config::$config["configuredPlanningTypes"] = 
+[
+    "planning.by-day", 
+    "planning.by-partnumber"
+];

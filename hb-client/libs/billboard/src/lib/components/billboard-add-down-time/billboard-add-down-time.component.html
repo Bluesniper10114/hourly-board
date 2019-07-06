@@ -1,0 +1,107 @@
+<div class="dialog-content-wrapper">
+  <mat-toolbar matDialogTitle class=" m-0 accent">
+    <mat-toolbar-row fxLayout="row wrap" fxLayoutAlign="space-between center">
+      <span class="title dialog-title">{{ 'DownTimeModal.title' | translate }}</span>
+
+      <div>
+        <span class="title pr-4" style="padding-top:3px;"> {{ downTime.forDate }} </span>
+        <button type="button" mat-button class="mat-icon-button" (click)="dialogRef.close()" aria-label="Close dialog">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <div mat-dialog-content class="p-24 m-0" fusePerfectScrollbar>
+
+    <form [formGroup]="downTimeForm">
+
+      <div fxLayout="row wrap" fxLayoutAlign="space-between start" fxLayoutWrap fxLayoutGap="10px">
+
+        <table class="simple">
+          <thead>
+            <tr>
+              <th class="text-left th-title  text-capitalize">
+                <span [innerHtml]=" 'DownTimeModal.timeInterval' | translate"> </span>
+              </th>
+              <th class="text-left  th-title text-capitalize">
+                <span [innerHtml]=" 'DownTimeModal.machine' | translate"> </span>
+              </th>
+              <th class="text-center  th-title text-capitalize">
+                <span [innerHtml]=" 'DownTimeModal.downTimeMin' | translate"> </span>
+              </th>
+              <th class="text-left  th-title text-capitalize">
+                <span [innerHtml]=" 'DownTimeModal.reasonsMins' | translate"> </span>
+              </th>
+            </tr>
+          </thead>
+          <tbody formArrayName="downtimeReasons" *ngFor="let interval of downtimeReasonsArray.controls; let intervalIndex = index ">
+            <tr [formGroupName]="intervalIndex">
+              <td class="text-left td-interval">
+                <input formControlName="downtimeId" hidden>
+                <input formControlName="timeInterval" class="no-input">
+              </td>
+              <td class="text-left td-machine">
+                <input formControlName="machine" class="no-input">
+              </td>
+              <td class="text-left td-machine">
+                <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="2px">
+                  <input formControlName="validatedDuration" class="no-input text-right p-0 w-60" [ngClass]="{'warn-fg': !validDuration}">  <span class="pl-4 pr-4">  of </span>
+                  <input formControlName="totalDuration" class="no-input text-left p-0 w-60">
+                </div>
+              </td>
+              <td class="w-460">
+
+                <div formArrayName="reasons" class="w-100-p" *ngFor="let reason of downtimeReasonsArray.controls[intervalIndex].get('reasons').controls;let reasonIndex = index">
+                  <div [formGroupName]="reasonIndex" class="p-4" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px">
+
+                    <mat-form-field fxFlex="60%">
+                      <mat-select [placeholder]=" 'DownTimeModal.reasonsPlaceholder' | translate" formControlName="reason" (selectionChange)="onDurationChange(intervalIndex,reasonIndex)">
+                        <mat-option *ngFor="let item of reasons" [value]="item.id">{{item.text}} </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field fxFlex>
+                      <mat-select [placeholder]="'DownTimeModal.minsPlaceholder' | translate" formControlName="duration" (selectionChange)="onDurationChange(intervalIndex,reasonIndex)">
+                        <mat-option *ngFor="let m of times" [value]="m">{{m}} m</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+
+
+                    <button type="button"  mat-icon-button [matTooltip]=" 'DownTimeModal.addBtn' | translate " (click)="addItem(intervalIndex,reasonIndex)" [disabled]="validDuration ||  ctrlsDisabled"
+                      class="green-600-fg">
+                      <mat-icon class="mat-24">add</mat-icon>
+                    </button>
+
+                    <button type="button" mat-icon-button [matTooltip]=" 'DownTimeModal.removeBtn' | translate " [disabled]="ctrlsDisabled"  (click)="removeItem(intervalIndex,reasonIndex)"  [hidden]="reasonIndex === 0"
+                      class="warn-600-fg">
+                      <mat-icon class="mat-24">delete</mat-icon>
+                    </button>
+
+
+
+                  </div>
+
+                </div>
+
+              </td>
+
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+    </form>
+
+  </div>
+
+  <div mat-dialog-actions class="m-0 p-16" fxLayout="row wrap" fxLayoutAlign="end center">
+
+    <button type="button" mat-raised-button (click)="close()" class="save-button mat-accent" [disabled]="!validDuration || downTimeForm.invalid || ctrlsDisabled" aria-label="SAVE">
+      {{ 'DownTimeModal.saveBtn' | translate }}
+    </button>
+
+  </div>
+</div>

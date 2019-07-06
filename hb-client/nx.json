@@ -1,0 +1,33 @@
+{
+  "npmScope": "hourly-board-workspace",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": "*",
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "hb-client": {
+      "tags": []
+    },
+    "hb-client-e2e": {
+      "tags": []
+    },
+    "shared-fuse": {
+      "tags": ["scope:shared"]
+    },
+    "shared-layout": {
+      "tags": ["scope:shared"]
+    },
+    "billboard": {
+      "tags": ["scope:billboard"]
+    },
+    "login": {
+      "tags": ["scope:login"]
+    },
+    "planning": {
+      "tags": ["scope:admin"]
+    }
+  }
+}

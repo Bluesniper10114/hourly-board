@@ -1,0 +1,89 @@
+[   
+    {
+        "title" : "Dashboard",
+        "link" : "",
+        "minimumFeatures" : ["management.profile"]
+    },
+    {
+        "title" : "Monitors",
+        "link" : "monitors",
+        "minimumFeatures" : ["management.monitors"]
+    },
+    {
+        "title" : "Planning",
+        "link" : "#",
+        "minimumFeatures" : ["management.planning"],
+        "children": [
+            {
+                "title" : "Planning Datasets",
+                "link" : "planning/datasets",
+                "minimumFeatures" : ["management.planning.datasets"]
+            },
+            {
+                "title" : "Planning by Day",
+                "link" : "planning/by-day",
+                "minimumFeatures" : ["management.planning.by-day"]
+            },
+            {
+                "title" : "Planning by PartNumber",
+                "link" : "planning/by-partnumber",
+                "minimumFeatures" : ["management.planning.by-partnumber"]
+            },
+            {
+                "title" : "Breaks",
+                "link" : "planning/breaks",
+                "minimumFeatures" : ["management.planning.breaks"]
+            },
+            {
+                "title" : "Production Lines",
+                "link" : "production-lines",
+                "minimumFeatures" : ["management.settings.production-lines"]
+            }
+        ]
+    },
+    {
+        "title" : "Settings",
+        "link" : "#",
+        "minimumFeatures" : ["management.settings", "management.settings.routings-per-pn"],
+        "children": [ 
+            {
+                "title" : "General",
+                "link" : "settings/general",
+                "minimumFeatures" : ["management.settings.general"]
+            },
+            {
+                "title" : "Rights",
+                "link" : "settings/rights",
+                "minimumFeatures" : ["management.settings.rights"]
+            },
+            {
+                "title" : "Users",
+                "link" : "users",
+                "minimumFeatures" : ["management.users"]
+            },
+            {
+                "title" : "PartNumber Routings",
+                "link" : "settings/routings-per-pn",
+                "minimumFeatures" : ["management.settings.routings-per-pn"]
+            }
+        ]
+    },
+    
+    {
+        "title" : "Reports ",
+        "link" : "#",
+        "minimumFeatures" : ["management.settings", "management.settings.routings-per-pn"],
+        "children": [ 
+            {
+                "title" : "Historical Billboard",
+                "link" : "reports/historical-billboard",
+                "minimumFeatures" : ["management.profile"]
+            }
+        ]
+    },
+    {
+        "title" : "Profile",
+        "link" : "profile",
+        "minimumFeatures" : ["management.profile"]
+    }
+]

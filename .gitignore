@@ -1,0 +1,10 @@
+# Mounted data directories for data persistence
+data
+dbbk
+
+# Env file
+.env
+
+# Nano tmp files
+.*.swp
+

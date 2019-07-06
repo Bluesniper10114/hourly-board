@@ -1,0 +1,1 @@
+.\powerzeus\commands\deploy.ps1 -target release -apply:$false -skipVersion:$true -verbose:$true

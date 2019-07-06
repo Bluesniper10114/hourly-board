@@ -1,0 +1,57 @@
+<div class="dialog-content-wrapper">
+  <mat-toolbar matDialogTitle class=" m-0 accent">
+    <mat-toolbar-row fxLayout="row wrap" fxLayoutAlign="space-between center">
+
+      <span class="title dialog-title" *ngIf="type === 'Add Comments'">
+        <span *ngIf="!data.selectedIds.length">{{ 'CommentsModal.addTitle' | translate }}</span>
+        <span *ngIf="data.selectedIds.length">{{ 'CommentsModal.editTitle' | translate }}</span>
+      </span>
+
+      <span class="title dialog-title" *ngIf="type !== 'Add Comments'">
+        <span *ngIf="!data.selectedIds.length">{{ 'EscalationsModal.addTitle' | translate }}</span>
+        <span *ngIf="data.selectedIds.length">{{ 'EscalationsModal.editTitle' | translate }}</span>
+      </span>
+
+      <button type="button" mat-button class="mat-icon-button" (click)="dialogRef.close()" aria-label="Close dialog">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <div mat-dialog-content class="p-24 m-0" fusePerfectScrollbar>
+
+    <form [formGroup]="commentsForm">
+      <input formControlName="hourlyId" hidden>
+
+      <div fxLayout="row wrap" fxLayoutAlign="space-between start" fxLayoutWrap fxLayoutGap="10px">
+
+        <mat-form-field fxFlex *ngIf="type === 'Add Comments' ">
+          <mat-select [placeholder]=" 'CommentsModal.inputPlaceHolder' | translate " formControlName="comments"
+            multiple>
+            <mat-option *ngFor="let comment of list" [value]="comment.id">{{comment.text}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field fxFlex *ngIf="type === 'Add Escalations' ">
+          <mat-select [placeholder]=" 'EscalationsModal.inputPlaceHolder' | translate " formControlName="escalations"
+            multiple>
+            <mat-option *ngFor="let esc of list" [value]="esc.id">{{esc.text}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </div>
+
+    </form>
+
+  </div>
+
+  <div mat-dialog-actions class="m-0 p-16" fxLayout="row wrap" fxLayoutAlign="space-between center">
+
+    <button mat-raised-button (click)="dialogRef.close(commentsForm)" class="save-button mat-accent" [disabled]="commentsForm.invalid"
+      aria-label="SAVE" type="button">
+    <span *ngIf="type === 'Add Escalations' ">{{ 'EscalationsModal.saveBtn' | translate }}</span>
+    <span *ngIf="type === 'Add Comments' ">{{ 'CommentsModal.saveBtn' | translate }}</span>
+    </button>
+
+  </div>
+</div>

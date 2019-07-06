@@ -1,0 +1,23 @@
+[
+    {   "name" : "planning.by-day",
+        "prefix" : "planning_by_day",
+        "translationKey" : "DailyPlanning",
+        "path" : "planning/by-day",
+        "feature" : "management.planning.by-day"
+    },
+    {
+        "name" : "planning.by-partnumber",
+        "prefix" : "planning_by_partnumber",
+        "translationKey" : "PlanningByPart",
+        "path" : "planning/by-partnumber",
+        "feature" : "management.planning.by-partnumber"
+    },
+    {
+        "name" : "planning.by-night",
+        "prefix" : "planning_by_night",
+        "translationKey" : "PlanningByNight",
+        "path" : "planning/by-night",
+        "feature" : "management.planning.by-night"
+    }
+
+]

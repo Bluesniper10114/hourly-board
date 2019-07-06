@@ -1,0 +1,7 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "types": ["jasmine"]
+  },
+  "include": ["**/*.ts", "../shared/fuse/src/lib/models/footer.model.ts", "../shared/fuse/src/lib/models/httpResponse.model.ts", "../shared/fuse/src/lib/models/drpList.model.ts"]
+}

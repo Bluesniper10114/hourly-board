@@ -1,0 +1,46 @@
+<form name="lineDateForm" fxLayout="row" fxLayoutAlign="space-between start" fxLayoutGap="10px" class="w-100-p pt-8">
+
+  <mat-form-field fxFlex="33%" appearance="outline" floatLabel="always">
+    <!-- [placeholder]=" 'CommentsModal.inputPlaceHolder' | translate "  -->
+    <mat-label>Line</mat-label>
+
+    <mat-select name="selectedLines" multiple [(ngModel)]="selectedLines" placeholder="Lines" (selectionChange)="onFilterChange()" required>
+      <mat-option *ngFor="let line of lines" [value]="line.id">{{line.text}}</mat-option>
+    </mat-select>
+
+    <mat-error>
+      Please choose lines
+    </mat-error>
+
+  </mat-form-field>
+
+
+  <mat-form-field fxFlex="33%" appearance="outline" floatLabel="always">
+    <!-- [placeholder]=" 'CommentsModal.inputPlaceHolder' | translate "  -->
+    <mat-label>Date</mat-label>
+
+    <mat-select name="selectedDates" [(ngModel)]="selectedDates" placeholder="Date" multiple (selectionChange)="onFilterChange()" required>
+      <mat-option *ngFor="let date of dates" [value]="date">{{date}}</mat-option>
+    </mat-select>
+
+    <mat-error>
+      Please choose Dates
+    </mat-error>
+
+  </mat-form-field>
+
+  <mat-form-field fxFlex="33%" appearance="outline" floatLabel="always">
+    <!-- [placeholder]=" 'CommentsModal.inputPlaceHolder' | translate "  -->
+    <mat-label>Shifts</mat-label>
+
+    <mat-select name="selectedShifts" [(ngModel)]="selectedShifts" placeholder="Shifts" multiple (selectionChange)="onFilterChange()" required>
+      <mat-option *ngFor="let shift of shifts" [value]="shift">{{shift}}</mat-option>
+    </mat-select>
+
+    <mat-error>
+      Please choose Shifts
+    </mat-error>
+
+  </mat-form-field>
+
+</form>

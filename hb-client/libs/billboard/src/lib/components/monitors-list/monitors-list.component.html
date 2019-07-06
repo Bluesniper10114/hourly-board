@@ -1,0 +1,42 @@
+<div class="page-layout carded fullwidth inner-scroll">
+
+  <!-- TOP BACKGROUND -->
+  <div class="top-bg accent"></div>
+  <!-- / TOP BACKGROUND -->
+
+  <!-- CENTER -->
+  <div class="center">
+
+    <!-- CONTENT HEADER -->
+    <div class="header accent p-24 " fxLayout="row" fxLayoutAlign="center center">
+      <h2 class="mat-headline">Monitors</h2>
+    </div>
+    <!-- / CONTENT HEADER -->
+
+    <!-- CONTENT CARD -->
+    <div class="content-card">
+
+      <!-- CONTENT -->
+      <div class="content p-24 pt-0" *ngIf="monitors$ | async as monitors" fusePerfectScrollbar>
+
+        <hb-monitors-list-table [monitors]="monitors"  (openMonitorById)="onOpenMonitorByID($event)"></hb-monitors-list-table>
+
+      </div>
+      <!-- / CONTENT -->
+      <div *ngIf="!monitorLoaded" class="content" fxLayout="column" fxLayoutAlign="center center" fxFlex style="min-height: 400px;">
+        <mat-card class="select-message-text accent p-16 " [@animate]="{value:'*',params:{delay:'400ms'}}">
+          <span>Getting Monitors Data ......</span>
+        </mat-card>
+
+        <div style="position: relative;text-align: center;margin-top: 50px;">
+          <ngx-spinner [visible]="!monitorLoaded" [config]="spinnerConifg"></ngx-spinner>
+        </div>
+      </div>
+
+    </div>
+    <!-- / CONTENT CARD -->
+
+  </div>
+  <!-- / CENTER -->
+
+</div>

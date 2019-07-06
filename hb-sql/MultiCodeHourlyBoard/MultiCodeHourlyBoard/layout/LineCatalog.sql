@@ -1,0 +1,2 @@
+﻿--CREATE FULLTEXT CATALOG [LineCatalog]
+--GO

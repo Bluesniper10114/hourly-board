@@ -1,0 +1,127 @@
+/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+// Import Fuse core library
+@import "../../../libs/shared/fuse/src/lib/scss/core.scss";
+
+
+// Import app.theme.scss
+@import "./app/app.theme";
+
+.text-blue {
+  color: #40b1ec;
+}
+
+.pointer-cursor {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.border-right,
+.br {
+  border: none;
+}
+
+.br-movie .br-unit {
+  width: 100%;
+  background-color: #d1cebb;
+  height: 21px;
+}
+
+.br-movie .br-text {
+  letter-spacing: 2px;
+  clear: both;
+  text-align: right;
+  font-weight: 600;
+  position: absolute;
+  top: -26px;
+  right: 0px;
+  color: #212121;
+}
+
+.br-movie {
+  .br-unit {
+    &:nth-of-type(1) {
+
+      border-radius: 10px 0 0 10px;
+
+      &.br-active,
+      &.br-selected {
+        background-color: #0d9ee4;
+      }
+    }
+
+    &:nth-of-type(2) {
+
+      &.br-active,
+      &.br-selected {
+        background-color: #0aa3c5;
+      }
+    }
+
+    &:nth-of-type(3) {
+
+      &.br-active,
+      &.br-selected {
+        background-color: #0aa3b7;
+      }
+    }
+
+    &:nth-of-type(4) {
+
+      &.br-active,
+      &.br-selected {
+        background-color: #0aa6a4;
+      }
+    }
+
+    &:nth-of-type(5) {
+
+      &.br-active,
+      &.br-selected {
+        background-color: #09a890;
+      }
+    }
+
+    &:nth-of-type(6) {
+
+      &.br-active,
+      &.br-selected {
+        background-color: #0bac7f;
+      }
+    }
+
+    &:nth-of-type(7) {
+
+      &.br-active,
+      &.br-selected {
+        background-color: #07ae69;
+      }
+    }
+
+    &:nth-of-type(8) {
+
+      &.br-active,
+      &.br-selected {
+        background-color: #05b15c;
+      }
+    }
+
+    &:nth-of-type(9) {
+
+      &.br-active,
+      &.br-selected {
+        background-color: #04b043;
+      }
+    }
+
+    &:nth-of-type(10) {
+
+      border-radius: 0 10px 10px 0;
+
+      &.br-active,
+      &.br-selected {
+        background-color: #02b433;
+      }
+    }
+  }
+}

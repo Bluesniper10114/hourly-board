@@ -1,0 +1,22 @@
+# CORS Header
+Header set Access-Control-Allow-Origin     "*"
+Header set Access-Control-Allow-Methods    "GET, POST, PUT, DELETE"
+Header set Access-Control-Allow-Headers    "Content-Type, authorization"
+Header set Access-Control-Request-Headers  "X-Requested-With, accept, content-type, authorization"
+
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews
+    </IfModule>
+
+    RewriteEngine On
+
+    # Handle Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-l
+    RewriteRule ^(.*)$ index.php?$1 [L,QSA]
+
+    #handle authorization header
+    SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
+</IfModule>

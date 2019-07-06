@@ -1,0 +1,24 @@
+:host {
+
+  ::ng-deep .mat-card-header-text {
+    width: 100% !important;
+  }
+
+  table.simple {
+    // border:1px solid #dddd;
+
+    thead {
+      th {
+        padding: 7px 4px !important;
+        background-color: #f5f5f5;
+      }
+    }
+
+    tbody {
+      td {
+        padding: 13px 4px !important;
+      }
+    }
+  }
+
+}

@@ -1,0 +1,1 @@
+./vendor/bin/phpstan analyse --configuration=phpstan.neon --level=max src mvc-php settings language management api
